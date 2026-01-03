@@ -36,30 +36,30 @@ const Login = () => {
             {/* Contenedor del formulario centrado (ventana flotante) */}
             <div className="flex items-center justify-center h-full">
                 <div className="md:w-4/5 sm:w-full max-w-md rounded-xl shadow-lg p-8 relative z-10" style={{ backgroundColor: 'var(--color-base)' }}>
-                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase">Welcome Back</h1>
-                    <small className="block my-4 text-sm" style={{ color: 'var(--color-secondary)' }}>Please enter your details</small>
+                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase">Bienvenido</h1>
+                    <small className="block my-4 text-sm" style={{ color: 'var(--color-secondary)' }}>Por favor ingresa tus datos</small>
 
                     <form onSubmit={handleSubmit(loginUser)}>
                         {/* Correo electrónico */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">Email</label>
-                            <input type="email" placeholder="Enter your email" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-2 text-gray-500" 
-                            {...register("email", { required: "El correo es obligatorio" })}
+                            <label className="mb-2 block text-sm font-semibold">Correo electrónico</label>
+                            <input type="email" placeholder="Ingresa tu correo" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-2 text-gray-500" 
+                            {...register("email", { required: "Campo obligatorio" })}
                             />
-                            {errors.email && <p className="text-red-800">{errors.email.message}</p>}
+                            {errors.email && <p className="text-red-800 text-xs">{errors.email.message}</p>}
                         </div>
 
                         {/* Contraseña */}
                         <div className="mb-3 relative">
-                            <label className="mb-2 block text-sm font-semibold">Password</label>
+                            <label className="mb-2 block text-sm font-semibold">Contraseña</label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    placeholder="Enter your password"
+                                    placeholder="Ingresa tu contraseña"
                                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500 pr-10"
-                                    {...register("password", { required: "La contraseña es obligatoria" })}
+                                    {...register("password", { required: "Campo obligatorio" })}
                                     />
-                                    {errors.password && <p className="text-red-800">{errors.password.message}</p>}
+                                    {errors.password && <p className="text-red-800 text-xs">{errors.password.message}</p>}
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
@@ -86,25 +86,25 @@ const Login = () => {
                     {/* Separador con opción de "O" */}
                     <div className="mt-6 grid grid-cols-3 items-center text-gray-400">
                         <hr className="border-gray-400" />
-                        <p className="text-center text-sm">OR</p>
+                        <p className="text-center text-sm">O</p>
                         <hr className="border-gray-400" />
                     </div>
 
                     {/* Botón de inicio de sesión con Google */}
                     <button className="border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-sm hover:scale-105 duration-300" style={{ backgroundColor: 'white', color: 'var(--color-primary)', borderColor: 'var(--color-primary)' }}>
                         <img className="w-5 mr-2" src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Google icon" />
-                        Sign in with Google
+                        Iniciar sesión con Google
                     </button>
 
                     {/* Olvidaste tu contraseña */}
                     <div className="mt-5 text-xs border-b-2 py-4">
-                        <Link to="/forgot/id" className="underline text-sm hover:text-gray-900" style={{ color: 'var(--color-secondary)' }}>Forgot your password?</Link>
+                        <Link to="/forgot/id" className="underline text-sm hover:text-gray-900" style={{ color: 'var(--color-secondary)' }}>¿Olvidaste tu contraseña?</Link>
                     </div>
 
                     {/* Enlaces para volver o registrarse */}
                     <div className="mt-3 text-sm flex justify-between items-center">
-                        <Link to="/" className="underline text-sm hover:text-gray-900" style={{ color: 'var(--color-secondary)' }}>Back</Link>
-                        <Link to="/register" className="py-2 px-5 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Register</Link>
+                        <Link to="/" className="underline text-sm hover:text-gray-900" style={{ color: 'var(--color-secondary)' }}>Volver</Link>
+                        <Link to="/register" className="py-2 px-5 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Registrarse</Link>
                     </div>
                 </div>
             </div>

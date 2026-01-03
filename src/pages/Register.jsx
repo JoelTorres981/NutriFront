@@ -29,67 +29,67 @@ export const Register = () => {
             <div className="flex items-center justify-center h-full">
                 <div className="md:w-4/5 sm:w-full max-w-md rounded-xl shadow-lg p-8 relative z-10" style={{ backgroundColor: 'var(--color-base)' }}>
 
-                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase">Welcome</h1>
-                    <small className="block my-4 text-sm" style={{ color: 'var(--color-secondary)' }}>Please enter your details</small>
+                    <h1 className="text-3xl font-semibold mb-2 text-center uppercase">Bienvenido</h1>
+                    <small className="block my-4 text-sm" style={{ color: 'var(--color-secondary)' }}>Por favor ingresa tus datos</small>
 
                     <form onSubmit={handleSubmit(registerUser)}>
 
                         {/* Campo para nombre */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">First Name</label>
-                            <input type="text" placeholder="Enter your first name" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("nombre", { required: "El nombre es obligatorio" })}
+                            <label className="mb-2 block text-sm font-semibold">Nombre</label>
+                                <input type="text" placeholder="Ingresa tu nombre" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
+                            {...register("nombre", { required: "Campo obligatorio" })}
                             />
-                            {errors.nombre && <p className="text-red-800">{errors.nombre.message}</p>}
+                            {errors.nombre && <p className="text-red-800 text-xs">{errors.nombre.message}</p>}
                         </div>
 
                         {/* Campo para apellido */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">Last Name</label>
-                            <input type="text" placeholder="Enter your last name" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("apellido", { required: "El apellido es obligatorio" })}
+                            <label className="mb-2 block text-sm font-semibold">Apellido</label>
+                                <input type="text" placeholder="Ingresa tu apellido" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
+                            {...register("apellido", { required: "Campo obligatorio" })}
                             />
-                            {errors.apellido && <p className="text-red-800">{errors.apellido.message}</p>}
+                            {errors.apellido && <p className="text-red-800 text-xs">{errors.apellido.message}</p>}
                         </div>
 
                         {/* Campo para dirección */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">Address</label>
-                            <input type="text" placeholder="Enter your address" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("direccion", { required: "La direccion es obligatoria" })}
+                            <label className="mb-2 block text-sm font-semibold">Dirección</label>
+                                <input type="text" placeholder="Ingresa tu dirección" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
+                            {...register("direccion", { required: "Campo obligatorio" })}
                             />
-                            {errors.direccion && <p className="text-red-800">{errors.direccion.message}</p>}
+                            {errors.direccion && <p className="text-red-800 text-xs">{errors.direccion.message}</p>}
                         </div>
                         
                         {/* Campo para celular */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">Phone</label>
-                            <input type="tel" placeholder="Enter your phone number" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("celular", { required: "El celular es obligatorio" })}
+                            <label className="mb-2 block text-sm font-semibold">Teléfono</label>
+                                <input type="tel" placeholder="Ingresa tu número de teléfono" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
+                            {...register("celular", { required: "Campo obligatorio" })}
                             />
-                            {errors.celular && <p className="text-red-800">{errors.celular.message}</p>}
+                            {errors.celular && <p className="text-red-800 text-xs">{errors.celular.message}</p>}
                         </div>
 
                         {/* Campo para correo electrónico */}
                         <div className="mb-3">
-                            <label className="mb-2 block text-sm font-semibold">Email</label>
-                            <input type="email" placeholder="Enter your email" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("email", { required: "El correo electrónico es obligatorio" })}
+                            <label className="mb-2 block text-sm font-semibold">Correo electrónico</label>
+                                <input type="email" placeholder="Ingresa tu correo electrónico" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
+                            {...register("email", { required: "Campo obligatorio" })}
                             />
-                            {errors.email && <p className="text-red-800">{errors.email.message}</p>}
+                            {errors.email && <p className="text-red-800 text-xs">{errors.email.message}</p>}
                         </div>
 
                         {/* Campo para contraseña */}
                         <div className="mb-3 relative">
-                            <label className="mb-2 block text-sm font-semibold">Password</label>
+                            <label className="mb-2 block text-sm font-semibold">Contraseña</label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    placeholder="********************"
+                                    placeholder="Ingresa tu contraseña"
                                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500 pr-10"
-                                    {...register("password", { required: "La contraseña es obligatoria" })}
+                                    {...register("password", { required: "Campo obligatorio" })}
                                 />
-                                    {errors.password && <p className="text-red-800">{errors.password.message}</p>}
+                                    {errors.password && <p className="text-red-800 text-xs">{errors.password.message}</p>}
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
@@ -110,15 +110,15 @@ export const Register = () => {
 
                         {/* Botón para enviar el formulario */}
                         <div className="mb-3">
-                            <button className="border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>Register</button>
+                            <button className="border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>Registrarse</button>
                         </div>
 
                     </form>
 
                     {/* Enlace para iniciar sesión si ya tiene una cuenta */}
                     <div className="mt-3 text-sm flex justify-between items-center">
-                        <p style={{ color: 'var(--color-secondary)' }}>Already have an account?</p>
-                        <Link to="/login" className="py-2 px-5 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Sign In</Link>
+                        <p style={{ color: 'var(--color-secondary)' }}>¿Ya tienes una cuenta?</p>
+                        <Link to="/login" className="py-2 px-5 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Iniciar sesión</Link>
                     </div>
 
                 </div>
