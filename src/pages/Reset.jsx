@@ -54,13 +54,13 @@ const Reset = () => {
                         Bienvenido nuevamente
                     </h1>
                     <small className="block my-4 text-sm text-center" style={{ color: 'var(--color-secondary)' }}>
-                        Pro favor, ingrese los siguientes datos
+                        Por favor, ingrese los siguientes datos
                     </small>
 
                     <img
                         className="mx-auto object-cover h-40 w-40 rounded-full border-4 border-solid border-slate-600"
                         src={nutriLogo}
-                        alt="image description"
+                        alt="logo de NutriApp"
                     />
 
                     {tokenback && (
