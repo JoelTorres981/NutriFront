@@ -4,6 +4,7 @@ import {useFetch} from '../hooks/useFetch'
 import { ToastContainer } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import storeAuth from "../context/storeAuth"
+import loginBackground from '/src/assets/images/loginBackground.jpg'
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +29,7 @@ const Login = () => {
             <ToastContainer />
 
             {/* Fondo en toda la pantalla (detrás) */}
-            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: "url('/public/images/loginBackground.jpg')" }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${loginBackground})` }} aria-hidden="true" />
             {/* Capa de overlay suave para mejorar contraste (sólo fondo) */}
             <div className="absolute inset-0 bg-black/30 z-0" aria-hidden="true" />
 

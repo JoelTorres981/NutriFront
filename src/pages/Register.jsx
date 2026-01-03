@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
 import { ToastContainer } from 'react-toastify'
 import { useFetch } from "../hooks/useFetch"
+import loginBackground from '/src/assets/images/loginBackground.jpg'
 
 export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -20,7 +21,7 @@ export const Register = () => {
             <ToastContainer />
 
             {/* Fondo en toda la pantalla (detrás) - usando la imagen de registro */}
-            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: "url('/public/images/loginBackground.jpg')" }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${loginBackground})` }} aria-hidden="true" />
             {/* Overlay suave para mejorar contraste (solo fondo) */}
             <div className="absolute inset-0 bg-black/30 z-0" aria-hidden="true" />
 

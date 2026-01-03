@@ -5,7 +5,7 @@ import {useFetch} from '../hooks/useFetch';
 import { ToastContainer } from 'react-toastify'
 import { useNavigate, useParams } from 'react-router'
 import { useForm } from 'react-hook-form'
-
+import resetBackground from '/src/assets/images/resetBackground.jpg'
 
 const Reset = () => {
 
@@ -42,7 +42,7 @@ const Reset = () => {
             <ToastContainer />
 
             {/* Fondo en toda la pantalla (detrás) */}
-            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0 " style={{ backgroundImage: "url('/public/images/resetBackground.jpg')" }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0 " style={{ backgroundImage: `url(${resetBackground})` }} aria-hidden="true" />
             {/* Overlay suave para mejorar contraste (solo fondo) */}
             <div className="absolute inset-0 bg-black/30 z-0" aria-hidden="true" />
 
