@@ -2,6 +2,7 @@ import {Link} from 'react-router'
 import { useForm } from 'react-hook-form';
 import { ToastContainer} from 'react-toastify'
 import { useFetch } from '../hooks/useFetch'
+import resetBackground from '/src/assets/images/resetBackground.jpg'
 
 export const Forgot = () => {
 
@@ -19,7 +20,7 @@ export const Forgot = () => {
             <ToastContainer />
 
             {/* Fondo en toda la pantalla (detrás) - imagen para forgot */}
-            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: "url('/public/images/resetBackground.jpg')" }} aria-hidden="true" />
+            <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${resetBackground})` }} aria-hidden="true" />
             {/* Overlay suave para mejorar contraste (solo fondo) */}
             <div className="absolute inset-0 bg-black/30 z-0" aria-hidden="true" />
 
