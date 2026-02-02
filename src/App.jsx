@@ -43,6 +43,7 @@ function App() {
             <Route path='forgot/:id' element={<Forgot />} />
             <Route path='confirm/:token' element={<Confirm />} />
             <Route path='reset/:token' element={<Reset />} />
+            <Route path='recuperarpassword/:token' element={<Reset />} />
             <Route path='*' element={<NotFound />} />
           </Route>
 
