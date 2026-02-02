@@ -12,16 +12,17 @@ const Login = () => {
     const navigate = useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm()
     const fetchDataBackend = useFetch()
-    const { setToken, setRol } = storeAuth()
+    const { setToken, setRol, setNombre } = storeAuth()
 
     const loginUser = async (dataForm) => {
         const url = dataForm.password.includes("ADM")
             ? `${import.meta.env.VITE_BACKEND_URL}/admin/login`
             : `${import.meta.env.VITE_BACKEND_URL}/estudiante/login`
         const response = await fetchDataBackend(url, dataForm, 'POST')
-        setToken(response.token)
-        setRol(response.rol)
         if (response) {
+            setToken(response.token)
+            setRol(response.rol)
+            setNombre(response.nombre)
             navigate('/dashboard')
         }
     }

@@ -1,7 +1,7 @@
-@import "tailwindcss";
-
 /* Importacion de fuentes de letra */
 @import url('https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
 
 @theme {
   /* Estilos de letra */

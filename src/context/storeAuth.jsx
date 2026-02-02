@@ -4,17 +4,19 @@ import { persist } from "zustand/middleware"
 
 const storeAuth = create(
     persist(
-        
+
         set => ({
             token: null,
-            rol:null,
+            rol: null,
+            nombre: null,
             setToken: (token) => set({ token }),
             setRol: (rol) => set({ rol }),
-            clearToken: () => set({ token: null})
+            setNombre: (nombre) => set({ nombre }),
+            clearToken: () => set({ token: null, nombre: null })
         }),
 
         { name: "auth-token" }
-    
+
     )
 )
 
