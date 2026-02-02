@@ -23,3 +23,7 @@ body {
   /* Variable definida para que sea la default */
   font-family: var(--font-mulish);
 }
+
+html {
+  scroll-behavior: smooth;
+}
