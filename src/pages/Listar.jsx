@@ -73,13 +73,16 @@ const Listar = () => {
                 onClick={() => navigate(`/dashboard/food/${item.id}`)}
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer group"
               >
-                <div className="relative overflow-hidden h-48">
+                <div className="relative overflow-hidden h-48 bg-gray-200">
                   <img
                     src={item.thumbnail}
                     alt={item.name}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = 'https://via.placeholder.com/400x300?text=No+Image';
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-lg text-gray-800 mb-1 truncate" title={item.name}>{item.name}</h3>
