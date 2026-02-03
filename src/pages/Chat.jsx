@@ -15,13 +15,25 @@ const Chat = () => {
     const messagesEndRef = useRef(null);
 
     useEffect(() => {
+        // Debug connection
+        socket.on('connect', () => {
+            console.log("Connected to socket server:", socket.id);
+        });
+
+        socket.on('connect_error', (err) => {
+            console.error("Socket connection error:", err);
+        });
+
         // Escuchar mensajes entrantes
         socket.on('chat_message', (data) => {
+            console.log("Message received:", data);
             setMessages((prev) => [...prev, data]);
         });
 
         // Limpiar listener al desmontar
         return () => {
+            socket.off('connect');
+            socket.off('connect_error');
             socket.off('chat_message');
         };
     }, []);
@@ -70,8 +82,8 @@ const Chat = () => {
                         >
                             <div
                                 className={`max-w-[80%] md:max-w-[60%] p-3 rounded-2xl shadow-sm relative ${isMyMessage
-                                        ? "bg-secondary text-white rounded-br-none"
-                                        : "bg-white text-gray-800 rounded-bl-none border border-gray-100"
+                                    ? "bg-secondary text-white rounded-br-none"
+                                    : "bg-white text-gray-800 rounded-bl-none border border-gray-100"
                                     }`}
                             >
                                 <div className={`text-xs font-bold mb-1 ${isMyMessage ? "text-indigo-100" : "text-primary"}`}>
