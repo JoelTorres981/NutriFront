@@ -14,7 +14,11 @@ import { Forgot } from './pages/Forgot'
 import Reset from './pages/Reset'
 import { NotFound } from './pages/NotFound'
 import Statistics from './pages/Statistics'
+
 import DashboardHome from './pages/DashboardHome'
+import AdminManagement from './pages/AdminManagement'
+import AdminCRUD from './pages/AdminCRUD'
+import StudentList from './pages/StudentList'
 
 import { useEffect } from 'react'
 import storeProfile from './context/storeProfile'
@@ -58,6 +62,9 @@ function App() {
                   <Route path='food/:name' element={<FoodDetail />} />
                   <Route path='calendary' element={<Calendary />} />
                   <Route path='estadisticas' element={<Statistics />} />
+                  <Route path='gestion' element={<AdminManagement />} />
+                  <Route path='admin-crud' element={<AdminCRUD />} />
+                  <Route path='student-list' element={<StudentList />} />
                 </Route>
               </Routes>
             </ProtectedRoute>

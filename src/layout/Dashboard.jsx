@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { FaUser, FaSearch, FaChartBar } from "react-icons/fa";
+import { FaUser, FaSearch, FaChartBar, FaUserShield } from "react-icons/fa";
 import { GrSchedule } from "react-icons/gr";
 import nutriAppLogo from '../assets/nutriApp.png'
 import storeAuth from '../context/storeAuth'
@@ -75,6 +75,12 @@ const Dashboard = () => {
                                 <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Estadísticas</span>
                             </Link>
                         </li>
+                        <li className="text-center">
+                            <Link to='/dashboard/gestion' className={`${urlActual === '/dashboard/gestion' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <FaUserShield className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Gestión</span>
+                            </Link>
+                        </li>
                     </ul>
                 )}
 
@@ -83,11 +89,13 @@ const Dashboard = () => {
             <div className='flex-1 flex flex-col justify-between h-screen bg-gray-100'>
                 <div className='bg-primary/80 py-2 flex md:justify-end items-center gap-5 justify-center'>
                     <div className='text-md font-semibold text-slate-100'>
-                        Usuario - {nombre}
+                        {rol === 'administrador' ? 'Administrador' : `Usuario - ${nombre}`}
                     </div>
-                    <div>
-                        <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" alt="img-client" className="border-2 border-base rounded-full" width={50} height={50} />
-                    </div>
+                    {rol !== 'administrador' && (
+                        <div>
+                            <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" alt="img-client" className="border-2 border-base rounded-full" width={50} height={50} />
+                        </div>
+                    )}
                     <div>
                         <Link to='/' className=" text-white mr-3 text-md block hover:bg-red-900 text-center
                         bg-red-800 px-4 py-1 rounded-lg" onClick={() => clearToken()}>Salir</Link>

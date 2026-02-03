@@ -46,7 +46,7 @@ const Statistics = () => {
 
     return (
         <div className='p-4 space-y-8'>
-            <h1 className='text-4xl font-black text-gray-800 '>Panel de Estadísticas</h1>
+            <h1 className='text-4xl font-black text-gray-800 '>Estadísticas</h1>
 
             {/* KPI Cards */}
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
