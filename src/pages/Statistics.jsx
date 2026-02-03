@@ -111,7 +111,7 @@ const Statistics = () => {
                                 >
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis type="number" />
-                                    <YAxis dataKey="name" type="category" width={100} />
+                                    <YAxis dataKey="name" type="category" width={0} tick={false} />
                                     <Tooltip />
                                     <Legend />
                                     <Bar dataKey="consultas" fill="#f97316" name="Consultas" radius={[0, 4, 4, 0]} />
