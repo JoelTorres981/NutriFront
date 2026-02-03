@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { FaUser, FaSearch } from "react-icons/fa";
+import { FaUser, FaSearch, FaChartBar } from "react-icons/fa";
 import { GrSchedule } from "react-icons/gr";
 import nutriAppLogo from '../assets/nutriApp.png'
 import storeAuth from '../context/storeAuth'
@@ -8,7 +8,7 @@ import storeAuth from '../context/storeAuth'
 const Dashboard = () => {
     const location = useLocation()
     const urlActual = location.pathname
-    const { clearToken, nombre } = storeAuth()
+    const { clearToken, nombre, rol } = storeAuth()
     const [expanded, setExpanded] = useState(false)
     return (
         <div className='md:flex md:min-h-screen'>
@@ -41,29 +41,42 @@ const Dashboard = () => {
 
                 <hr className="mt-5 border-base" />
 
-                <ul className="mt-5 space-y-2">
+                {rol === 'estudiante' && (
+                    <ul className="mt-5 space-y-2">
 
-                    <li className="text-center">
-                        <Link to='/dashboard' className={`${urlActual === '/dashboard' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
-                            <FaUser className="text-2xl min-w-[1.5rem]" />
-                            <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Información Personal</span>
-                        </Link>
-                    </li>
+                        <li className="text-center">
+                            <Link to='/dashboard' className={`${urlActual === '/dashboard' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <FaUser className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Información Personal</span>
+                            </Link>
+                        </li>
 
-                    <li className="text-center">
-                        <Link to='/dashboard/listar' className={`${urlActual === '/dashboard/listar' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
-                            <FaSearch className="text-2xl min-w-[1.5rem]" />
-                            <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Buscar</span>
-                        </Link>
-                    </li>
+                        <li className="text-center">
+                            <Link to='/dashboard/listar' className={`${urlActual === '/dashboard/listar' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <FaSearch className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Buscar</span>
+                            </Link>
+                        </li>
 
-                    <li className="text-center">
-                        <Link to='/dashboard/calendary' className={`${urlActual === '/dashboard/calendary' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
-                            <GrSchedule className="text-2xl min-w-[1.5rem]" />
-                            <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Calendario</span>
-                        </Link>
-                    </li>
-                </ul>
+                        <li className="text-center">
+                            <Link to='/dashboard/calendary' className={`${urlActual === '/dashboard/calendary' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <GrSchedule className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Calendario</span>
+                            </Link>
+                        </li>
+                    </ul>
+                )}
+
+                {rol === 'administrador' && (
+                    <ul className="mt-5 space-y-2">
+                        <li className="text-center">
+                            <Link to='/dashboard/estadisticas' className={`${urlActual === '/dashboard/estadisticas' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <FaChartBar className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Estadísticas</span>
+                            </Link>
+                        </li>
+                    </ul>
+                )}
 
             </div>
 
@@ -91,7 +104,7 @@ const Dashboard = () => {
 
 
 
-        </div>
+        </div >
     )
 }
 

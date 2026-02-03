@@ -13,6 +13,8 @@ import ProtectedRoute from './routes/ProtectedRoute'
 import { Forgot } from './pages/Forgot'
 import Reset from './pages/Reset'
 import { NotFound } from './pages/NotFound'
+import Statistics from './pages/Statistics'
+import DashboardHome from './pages/DashboardHome'
 
 import { useEffect } from 'react'
 import storeProfile from './context/storeProfile'
@@ -21,13 +23,13 @@ import storeAuth from './context/storeAuth'
 
 function App() {
   const { profile } = storeProfile()
-  const { token } = storeAuth()
+  const { token, rol } = storeAuth()
 
   useEffect(() => {
-    if (token) {
+    if (token && rol !== 'administrador') {
       profile()
     }
-  }, [token])
+  }, [token, rol])
 
 
 
@@ -51,10 +53,11 @@ function App() {
             <ProtectedRoute>
               <Routes>
                 <Route element={<Dashboard />}>
-                  <Route index element={<PersonalData />} />
+                  <Route index element={<DashboardHome />} />
                   <Route path='listar' element={<Listar />} />
                   <Route path='food/:name' element={<FoodDetail />} />
                   <Route path='calendary' element={<Calendary />} />
+                  <Route path='estadisticas' element={<Statistics />} />
                 </Route>
               </Routes>
             </ProtectedRoute>

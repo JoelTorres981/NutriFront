@@ -23,7 +23,11 @@ const Login = () => {
             setToken(response.token)
             setRol(response.rol)
             setNombre(response.nombre)
-            navigate('/dashboard')
+            if (response.rol === 'administrador') {
+                navigate('/dashboard/estadisticas')
+            } else {
+                navigate('/dashboard')
+            }
         }
     }
 
