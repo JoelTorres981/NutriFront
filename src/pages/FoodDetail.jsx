@@ -1,184 +1,129 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { FaArrowLeft, FaUtensils, FaYoutube, FaLink, FaGlobeAmericas, FaTags } from 'react-icons/fa'
 
 const FoodDetail = () => {
   const { name } = useParams()
-  const decodedName = decodeURIComponent(name || '')
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [info, setInfo] = useState(null)
 
   useEffect(() => {
-    const fetchFromSpoonacular = async () => {
+    const fetchMealDetail = async () => {
       setLoading(true)
       setError(null)
 
-      const apiKey = import.meta.env.VITE_SPOONACULAR_KEY
-      if (!apiKey) {
-        setError('Dont find the API key from Spoonacular.')
-        setLoading(false)
-        return
-      }
-
       try {
-        // 1) Buscar receta por nombre
-        const searchUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(decodedName)}&number=1&apiKey=${apiKey}`
-        const searchRes = await axios.get(searchUrl)
-        const result = searchRes.data?.results?.[0]
-        if (!result) {
-          setError('No results found on Spoonacular for: ' + decodedName)
-          setLoading(false)
-          return
-        }
-
-        // 2) Obtener información detallada (incluyendo nutrición)
-        const infoUrl = `https://api.spoonacular.com/recipes/${result.id}/information?includeNutrition=true&apiKey=${apiKey}`
-        const infoRes = await axios.get(infoUrl)
-        setInfo(infoRes.data)
+        const url = `${import.meta.env.VITE_BACKEND_URL}/meals/detail/${name}`
+        const res = await axios.get(url)
+        setInfo(res.data)
       } catch (err) {
         console.error(err)
-        const status = err.response?.status
-        const serverMsg = err.response?.data?.message || err.response?.data?.status || err.response?.data || err.message
-        if (status === 401) {
-          setError('401 Unauthorized: Please verify your Spoonacular API key.')
-        } else {
-          setError(`Error fetching from Spoonacular${status ? ` (status ${status})` : ''}: ${serverMsg}`)
-        }
+        setError('Error al cargar la información de la receta.')
       } finally {
         setLoading(false)
       }
     }
 
-    fetchFromSpoonacular()
-  }, [decodedName])
+    if (name) {
+      fetchMealDetail()
+    }
+  }, [name])
 
-  if (loading) return <div className="p-4">Loading information...</div>
-  if (error) return <div className="p-4 text-red-600">{error}</div>
+  if (loading) return (
+    <div className="flex justify-center items-center min-h-[50vh]">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+    </div>
+  )
 
-  // helper to get nutrient value
-  const nutrientValue = (names) => {
-    const nutrients = info?.nutrition?.nutrients || []
-    const n = nutrients.find((x) => names.some((s) => x.name?.toLowerCase().includes(s)))
-    if (!n) return null
-    const amount = Math.round((n.amount || 0) * 10) / 10
-    return { label: n.name, value: amount, unit: n.unit }
-  }
+  if (error) return (
+    <div className="p-8 text-center">
+      <p className="text-red-500 text-xl font-semibold mb-4">{error}</p>
+      <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline">Volver atrás</button>
+    </div>
+  )
 
-  const calories = nutrientValue(['calories', 'energy'])
-  const protein = nutrientValue(['protein'])
-  const fat = nutrientValue(['fat'])
-  const carbs = nutrientValue(['carbohydrates', 'carb'])
+  if (!info) return null
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-sm">
-      <div className="flex flex-col md:flex-row gap-6">
-        {/* Image & meta */}
-        <div className="md:w-1/3 shrink-0">
-          {info.image ? (
-            <img src={info.image} alt={info.title} className="w-full h-64 md:h-72 object-cover rounded-lg shadow-md mb-4" />
-          ) : (
-            <div className="w-full h-64 md:h-72 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">No image</div>
-          )}
+    <div className="max-w-5xl mx-auto p-4 md:p-8 bg-white rounded-2xl shadow-xl mt-4 animate-fade-in-up">
+      <button
+        onClick={() => navigate(-1)}
+        className="flex items-center text-gray-600 hover:text-primary mb-6 transition-colors font-medium"
+      >
+        <FaArrowLeft className="mr-2" /> Volver
+      </button>
 
-          <div className="flex flex-wrap gap-2">
-            {info.readyInMinutes && (
-              <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>{info.readyInMinutes} min</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        {/* Left Column: Image & Basic Info */}
+        <div>
+          <div className="relative rounded-2xl overflow-hidden shadow-lg mb-6 group">
+            <img
+              src={info.thumbnail}
+              alt={info.name}
+              className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
+            />
+            {info.area && (
+              <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-bold text-gray-800 flex items-center shadow-sm">
+                <FaGlobeAmericas className="mr-2 text-blue-500" /> {info.area}
+              </div>
             )}
-            {info.servings && (
-              <span className="px-3 py-1 rounded-full text-sm font-medium" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>{info.servings} servings</span>
+          </div>
+
+          <div className="flex flex-wrap gap-2 mb-6">
+            <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center">
+              <FaUtensils className="mr-2" /> {info.category}
+            </span>
+            {info.tags && info.tags.map((tag, idx) => (
+              <span key={idx} className="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm font-medium flex items-center">
+                <FaTags className="mr-1 text-gray-400 text-xs" /> {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Links */}
+          <div className="flex gap-4">
+            {info.youtube && (
+              <a href={info.youtube} target="_blank" rel="noopener noreferrer" className="flex-1 bg-red-600 hover:bg-red-700 text-white text-center py-2.5 rounded-lg font-bold transition-colors flex justify-center items-center shadow-md">
+                <FaYoutube className="mr-2 text-xl" /> Ver en YouTube
+              </a>
             )}
-            {typeof info.healthScore !== 'undefined' && (
-              <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">Health {info.healthScore}</span>
+            {info.source && (
+              <a href={info.source} target="_blank" rel="noopener noreferrer" className="flex-1 bg-gray-800 hover:bg-gray-900 text-white text-center py-2.5 rounded-lg font-bold transition-colors flex justify-center items-center shadow-md">
+                <FaLink className="mr-2" /> Fuente Original
+              </a>
             )}
           </div>
         </div>
 
-        {/* Details */}
-        <div className="md:w-2/3">
-          <h2 className="text-2xl font-bold mb-2">{info.title}</h2>
+        {/* Right Column: Ingredients & Instructions */}
+        <div>
+          <h1 className="text-4xl font-black text-gray-900 mb-6 leading-tight">{info.name}</h1>
 
-          <div className="mb-4 text-sm text-gray-600">
-            {info.dishTypes && info.dishTypes.length > 0 && (
-              <span className="mr-2">{info.dishTypes.join(' • ')}</span>
-            )}
-            {info.cuisines && info.cuisines.length > 0 && (
-              <span className="text-gray-500">{info.cuisines.join(', ')}</span>
-            )}
-          </div>
-
-          {info.summary ? (
-            <div className="prose max-w-none mb-4" dangerouslySetInnerHTML={{ __html: info.summary }} />
-          ) : (
-            <p className="mb-4 text-gray-700">No description available.</p>
-          )}
-
-          {/* Nutrition  cards */}
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold mb-2">Nutrition</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {calories ? (
-                <div className="p-3 rounded-lg shadow-sm text-center" style={{ backgroundColor: 'rgba(55,151,164,0.06)' }}>
-                  <div className="text-xs text-gray-500">Calories</div>
-                  <div className="text-lg font-semibold">{calories.value} {calories.unit}</div>
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-primary pl-3">Ingredientes</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {info.ingredients.map((ing, index) => (
+                <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-secondary mr-3"></div>
+                  <span className="font-semibold text-gray-700 mr-2">{ing.measure}</span>
+                  <span className="text-gray-600">{ing.ingredient}</span>
                 </div>
-              ) : (
-                <div className="p-3 rounded-lg shadow-sm text-center text-gray-400">-</div>
-              )}
-
-              {protein ? (
-                <div className="p-3 rounded-lg shadow-sm text-center" style={{ backgroundColor: 'rgba(110,227,151,0.07)' }}>
-                  <div className="text-xs text-gray-500">Protein</div>
-                  <div className="text-lg font-semibold">{protein.value} {protein.unit}</div>
-                </div>
-              ) : (
-                <div className="p-3 rounded-lg shadow-sm text-center text-gray-400">-</div>
-              )}
-
-              {fat ? (
-                <div className="p-3 rounded-lg shadow-sm text-center" style={{ backgroundColor: 'rgba(203,205,205,0.06)' }}>
-                  <div className="text-xs text-gray-500">Fat</div>
-                  <div className="text-lg font-semibold">{fat.value} {fat.unit}</div>
-                </div>
-              ) : (
-                <div className="p-3 rounded-lg shadow-sm text-center text-gray-400">-</div>
-              )}
-
-              {carbs ? (
-                <div className="p-3 rounded-lg shadow-sm text-center" style={{ backgroundColor: 'rgba(139,197,205,0.06)' }}>
-                  <div className="text-xs text-gray-500">Carbs</div>
-                  <div className="text-lg font-semibold">{carbs.value} {carbs.unit}</div>
-                </div>
-              ) : (
-                <div className="p-3 rounded-lg shadow-sm text-center text-gray-400">-</div>
-              )}
+              ))}
             </div>
           </div>
 
-          {/* Ingredients */}
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold mb-2">Ingredients</h3>
-            {Array.isArray(info.extendedIngredients) && info.extendedIngredients.length > 0 ? (
-              <div className="flex flex-wrap gap-2">
-                {info.extendedIngredients.map((ing) => {
-                  const key = ing.id || ing.name
-                  const amount = ing.measures?.us?.amount || ing.amount || ''
-                  const unit = ing.measures?.us?.unitShort || ing.unit || ''
-                  const label = ing.original || `${amount} ${unit} ${ing.name}`.trim()
-                  return (
-                    <span key={key} className="px-3 py-1 rounded-full text-sm bg-gray-100 text-gray-700">{label}</span>
-                  )
-                })}
-              </div>
-            ) : (
-              <p className="text-gray-700">No ingredients available.</p>
-            )}
+          <div>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 border-l-4 border-secondary pl-3">Instrucciones</h2>
+            <div className="prose text-gray-600 leading-relaxed text-justify whitespace-pre-line">
+              {info.instructions}
+            </div>
           </div>
-
-          {info.sourceUrl && (
-            <p className="mt-2">Source: <a target="_blank" rel="noreferrer" href={info.sourceUrl} className="text-blue-600 underline">View Full Recipe</a></p>
-          )}
         </div>
+
       </div>
     </div>
   )
