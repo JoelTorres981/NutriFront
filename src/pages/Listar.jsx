@@ -46,7 +46,7 @@ const Listar = () => {
             className="flex-1 outline-none text-gray-700 text-lg"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar recetas (ej: Chicken, Pasta)..."
+            placeholder="Buscar recetas"
           />
           {loading ? (
             <FaSpinner className="animate-spin text-gray-400" />
