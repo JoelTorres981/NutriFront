@@ -52,11 +52,11 @@ const ProfileForm = ({ formData, handleChange, handleSubmit, saving, onCancel })
                     <InputGroup label="Peso (kg)" name="peso" type="number" step="0.1" value={formData.peso} onChange={handleChange} placeholder="Ej: 70.5" />
                 </div>
                 <div className="grid md:grid-cols-2 gap-5 mb-4">
-                    <InputGroup label="Enfermedades / Condiciones" name="enfermedades" value={formData.enfermedades} onChange={handleChange} placeholder="Ej: Diabetes, Hipertensión..." />
-                    <InputGroup label="Medicamentos" name="medicamentos" value={formData.medicamentos} onChange={handleChange} placeholder="Ej: Insulina..." />
+                    <InputGroup label="Enfermedades / Condiciones (Opcional)" name="enfermedades" value={formData.enfermedades} onChange={handleChange} placeholder="Ej: Diabetes, Hipertensión..." />
+                    <InputGroup label="Medicamentos (Opcional)" name="medicamentos" value={formData.medicamentos} onChange={handleChange} placeholder="Ej: Insulina..." />
                 </div>
                 <div className="mb-4">
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">Alergias Alimentarias</label>
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">Alergias Alimentarias (Opcional)</label>
                     <textarea name="alergias" value={formData.alergias} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 h-20 focus:ring-2 focus:ring-primary/50 outline-none" placeholder="Ej: Nueces, mariscos, gluten..." />
                 </div>
             </fieldset>
@@ -76,7 +76,7 @@ const ProfileForm = ({ formData, handleChange, handleSubmit, saving, onCancel })
                         </select>
                     </div>
                     <div>
-                        <label className="mb-2 block text-sm font-semibold text-gray-700">Objetivo</label>
+                        <label className="mb-2 block text-sm font-semibold text-gray-700">Objetivo (Opcional)</label>
                         <select name="objetivo" value={formData.objetivo} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary/50 outline-none">
                             <option value="">Seleccionar</option>
                             <option value="perder_peso">Perder Peso</option>
@@ -88,9 +88,9 @@ const ProfileForm = ({ formData, handleChange, handleSubmit, saving, onCancel })
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-5 mb-4">
-                    <InputGroup label="Consumo Agua (litros)" name="consumoAgua" type="number" step="0.1" value={formData.consumoAgua} onChange={handleChange} />
-                    <InputGroup label="Horas de Sueño" name="horasSueno" type="number" value={formData.horasSueno} onChange={handleChange} />
-                    <InputGroup label="Nivel Estrés (1-10)" name="nivelEstres" type="number" min="1" max="10" value={formData.nivelEstres} onChange={handleChange} />
+                    <InputGroup label="Consumo Agua (litros) (Opcional)" name="consumoAgua" type="number" step="0.1" value={formData.consumoAgua} onChange={handleChange} />
+                    <InputGroup label="Horas de Sueño (Opcional)" name="horasSueno" type="number" value={formData.horasSueno} onChange={handleChange} />
+                    <InputGroup label="Nivel Estrés (1-10) (Opcional)" name="nivelEstres" type="number" min="1" max="10" value={formData.nivelEstres} onChange={handleChange} />
                 </div>
             </fieldset>
 
@@ -112,7 +112,7 @@ const ProfileForm = ({ formData, handleChange, handleSubmit, saving, onCancel })
                     <InputGroup label="Comidas al día" name="comidasAlDia" type="number" value={formData.comidasAlDia} onChange={handleChange} />
                 </div>
                 <div className="grid md:grid-cols-2 gap-5 mb-4">
-                    <InputGroup label="Presupuesto Semanal ($)" name="presupuesto" type="number" value={formData.presupuesto} onChange={handleChange} placeholder="Ej: 50" />
+                    <InputGroup label="Presupuesto Semanal ($) (Opcional)" name="presupuesto" type="number" value={formData.presupuesto} onChange={handleChange} placeholder="Ej: 50" />
                     <div>
                         <label className="mb-2 block text-sm font-semibold text-gray-700">Frecuencia de Compra</label>
                         <select name="frecuenciaCompra" value={formData.frecuenciaCompra} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-primary/50 outline-none">
@@ -126,7 +126,7 @@ const ProfileForm = ({ formData, handleChange, handleSubmit, saving, onCancel })
                 </div>
 
                 <div className="mb-4">
-                    <label className="mb-2 block text-sm font-semibold text-gray-700">Preferencias Alimenticias</label>
+                    <label className="mb-2 block text-sm font-semibold text-gray-700">Preferencias Alimenticias (Opcional)</label>
                     <textarea name="preferencias" value={formData.preferencias} onChange={handleChange} className="w-full border border-gray-300 rounded-lg p-2 h-20 focus:ring-2 focus:ring-primary/50 outline-none" placeholder="Ej: Me gusta mucho el pollo, no me gusta el brócoli..." />
                 </div>
             </fieldset>
