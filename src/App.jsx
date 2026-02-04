@@ -19,7 +19,6 @@ import DashboardHome from './pages/DashboardHome'
 import AdminManagement from './pages/AdminManagement'
 import AdminCRUD from './pages/AdminCRUD'
 import StudentList from './pages/StudentList'
-import Chat from './pages/Chat'
 
 import { useEffect } from 'react'
 import storeProfile from './context/storeProfile'
@@ -66,7 +65,7 @@ function App() {
                   <Route path='gestion' element={<AdminManagement />} />
                   <Route path='admin-crud' element={<AdminCRUD />} />
                   <Route path='student-list' element={<StudentList />} />
-                  <Route path='chat' element={<Chat />} />
+                  <Route path='student-list' element={<StudentList />} />
                 </Route>
               </Routes>
             </ProtectedRoute>
