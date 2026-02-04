@@ -11,7 +11,6 @@ import { TbToolsKitchen2 } from "react-icons/tb";
 import { Link } from 'react-router-dom'
 import { MdDashboard } from "react-icons/md";
 import { FaRobot } from "react-icons/fa";
-import { FaCommentSms } from "react-icons/fa6";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
@@ -77,10 +76,6 @@ export const Home = () => {
                             <li>
                                 <FaRobot className='inline text-2xl mr-2' />
                                 Inteligencia artificial
-                            </li>
-                            <li>
-                                <FaCommentSms className='inline text-2xl mr-2' />
-                                Chat en tiempo real
                             </li>
                             <li>
                                 <LuBotMessageSquare className='inline text-2xl mr-2' />
