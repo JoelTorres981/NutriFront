@@ -80,7 +80,7 @@ const Login = () => {
 
                         {/* Botón de iniciar sesión */}
                         <button className="py-2 w-full block text-center bg-gray-500 text-slate-300 border rounded-xl 
-                            hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white">Iniciar sesión</button>
+                            hover:scale-100 duration-300 hover:bg-gray-900 hover:text-white" style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>Iniciar sesión</button>
                     </form>
 
                     {/* Olvidaste tu contraseña */}
