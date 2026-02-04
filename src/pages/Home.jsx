@@ -21,7 +21,7 @@ export const Home = () => {
     return (
         <>
             <header className="container mx-auto h-40 text-center py-4 md:flex justify-between items-center px-4 md:h-15">
-                <h1 className='font-jaldi font-extrabold text-xl my-2 text-primary/80'>Nutri<span className='text-black'>App</span></h1>
+                <h1 className='font-jaldi font-extrabold text-3xl my-2 text-primary/80'>Nutri<span className='text-black'>App</span></h1>
                 <ul className='flex gap-5 justify-center my-4 flex-wrap'>
                     <li><a href="#home" className='font-bold hover:text-primary hover:scale-110 hover:text-xl'>Inicio</a></li>
                     <li><a href="#about" className='font-bold hover:text-primary hover:scale-110 hover:text-xl'>Sobre nosotros</a></li>
