@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import storeAuth from '../context/storeAuth'
+import storeProfile from '../context/storeProfile'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import ProfileView from '../components/ProfileView'
@@ -7,6 +8,7 @@ import ProfileForm from '../components/ProfileForm'
 
 const PersonalData = () => {
     const { token } = storeAuth()
+    const { profile } = storeProfile()
     const [loading, setLoading] = useState(true)
     const [saving, setSaving] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
@@ -137,6 +139,8 @@ const PersonalData = () => {
             console.log("Respuesta actualización:", response.data)
             toast.success("Perfil actualizado correctamente")
             setUserProfile(response.data) // Update local profile view
+            await profile() // Update GLOBAL profile state (triggers modal close)
+
             // Actualizar formData con los valores "rellenados" para que el usuario los vea
             setFormData(prev => ({ ...prev, ...datosParaEnviar }))
             setIsEditing(false) // Exit edit mode
