@@ -91,10 +91,8 @@ const Reset = () => {
                             <div className="mb-3">
                                 <button className="bg-primary/80 text-slate-300 border py-2 
                                 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-primary 
-                                hover:text-white">
-                                    Enviar
-                                </button>
-
+                                hover:text-white"
+                                style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}> Enviar </button>
                             </div>
                             
                         </form>

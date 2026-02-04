@@ -1,6 +1,6 @@
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 import { useForm } from 'react-hook-form';
-import { ToastContainer} from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import { useFetch } from '../hooks/useFetch'
 import resetBackground from '/src/assets/images/resetBackground.jpg'
 
@@ -11,7 +11,7 @@ export const Forgot = () => {
 
     const sendMail = async (dataForm) => {
         const url = `${import.meta.env.VITE_BACKEND_URL}/recuperarpassword`
-        await fetchDataBackend(url, dataForm,'POST')
+        await fetchDataBackend(url, dataForm, 'POST')
     }
 
     return (
@@ -38,7 +38,7 @@ export const Forgot = () => {
                         <div className="mb-1">
                             <label className="mb-2 block text-sm font-semibold">Correo electrónico</label>
                             <input type="email" placeholder="Ingresa un correo electrónico válido" className="block w-full rounded-md border border-gray-300 py-1 px-1.5 text-gray-500"
-                            {...register("email", { required: "El correo electrónico es obligatorio" })}
+                                {...register("email", { required: "El correo electrónico es obligatorio" })}
                             />
                             {errors.email && <p className="text-red-800">{errors.email.message}</p>}
                         </div>
@@ -46,7 +46,8 @@ export const Forgot = () => {
 
                         {/* Botón Forgot password */}
                         <div className="mb-3">
-                            <button className="bg-gray-600 text-slate-300 border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white">Enviar correo 
+                            <button className="bg-gray-600 text-slate-300 border py-2 w-full rounded-xl mt-5 hover:scale-105 duration-300 hover:bg-gray-900 hover:text-white"
+                                style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>Enviar correo
                             </button>
                         </div>
 
@@ -59,7 +60,8 @@ export const Forgot = () => {
                     {/* Enlace para iniciar sesión si ya posee una cuenta */}
                     <div className="mt-3 text-sm flex justify-between items-center">
                         <p>¿Ya posees una cuenta?</p>
-                        <Link to="/login" className="py-2 px-5 bg-gray-600 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white">Iniciar sesión</Link>
+                        <Link to="/login" className="py-2 px-5 bg-gray-600 text-slate-300 border rounded-xl hover:scale-110 duration-300 hover:bg-gray-900 hover:text-white"
+                            style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Iniciar sesión</Link>
                     </div>
 
                 </div>
