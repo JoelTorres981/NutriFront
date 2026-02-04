@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaPlus, FaTrash, FaCalendarAlt} from 'react-icons/fa';
+import { FaPlus, FaTrash, FaUtensils } from 'react-icons/fa';
 import storeAuth from '../context/storeAuth';
 
 const MealPlanning = () => {
@@ -80,7 +80,7 @@ const MealPlanning = () => {
         <div className="p-6">
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
-                    <FaCalendarAlt className="text-primary" /> Planificación de Comidas
+                    <FaUtensils className="text-primary" /> Planificación de Comidas
                 </h1>
                 <div className="flex gap-4">
                     <button
