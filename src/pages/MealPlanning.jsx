@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaPlus, FaTrash, FaCalendarAlt, FaTimes } from 'react-icons/fa';
+import { FaPlus, FaTrash, FaCalendarAlt} from 'react-icons/fa';
 import storeAuth from '../context/storeAuth';
 
 const MealPlanning = () => {
@@ -88,7 +88,7 @@ const MealPlanning = () => {
                         className={`px-4 py-2 rounded-lg font-semibold transition-colors flex items-center gap-2 border ${deleteMode ? 'bg-red-100 text-red-600 border-red-300' : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
                             }`}
                     >
-                        <FaTrash /> {deleteMode ? 'Cancelar Eliminar' : 'Eliminar'}
+                        <FaTrash /> {deleteMode ? 'Cancelar' : 'Eliminar'}
                     </button>
                     <button
                         onClick={handleGenerate}

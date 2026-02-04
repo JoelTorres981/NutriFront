@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { FaUser, FaSearch, FaChartBar, FaUserShield } from "react-icons/fa";
+import { FaUser, FaSearch, FaChartBar, FaUserShield, FaUtensils } from "react-icons/fa";
 import { GrSchedule } from "react-icons/gr";
 import nutriAppLogo from '../assets/nutriApp.png'
 import storeAuth from '../context/storeAuth'
@@ -67,7 +67,7 @@ const Dashboard = () => {
 
                         <li className="text-center">
                             <Link to='/dashboard/planning' className={`${urlActual === '/dashboard/planning' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
-                                <GrSchedule className="text-2xl min-w-[1.5rem]" />
+                                <FaUtensils className="text-2xl min-w-[1.5rem]" />
                                 <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Planificación</span>
                             </Link>
                         </li>

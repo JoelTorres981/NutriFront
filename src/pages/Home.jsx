@@ -15,7 +15,7 @@ import { FaUserDoctor } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaXTwitter } from "react-icons/fa6";
-
+import { FaSearch } from "react-icons/fa";
 
 export const Home = () => {
     return (
@@ -79,7 +79,7 @@ export const Home = () => {
                             </li>
                             <li>
                                 <LuBotMessageSquare className='inline text-2xl mr-2' />
-                                Chatbot
+                                Planificacion de alimentos
                             </li>
                             <li>
                                 <BiScan className='inline text-2xl mr-2' />
@@ -87,7 +87,11 @@ export const Home = () => {
                             </li>
                             <li>
                                 <GrSchedule className='inline text-2xl mr-2' />
-                                Gestión de horarios
+                                Calendario alimenticio
+                            </li>
+                            <li>
+                                <FaSearch className='inline text-2xl mr-2' />
+                                Informacion nutricional
                             </li>
                         </ul>
                         <p className='my-4'>Y otras características que aprovechan las tecnologías modernas</p>
