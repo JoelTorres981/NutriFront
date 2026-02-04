@@ -1,16 +1,44 @@
-# React + Vite
+Landing Page
+![alt text](src/assets/README/Home.png)
+![alt text](src/assets/README/AboutUs.png)
+![alt text](src/assets/README/ServiciosContactanos.png)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Login
+![alt text](src/assets/README/Login.png)
 
-Currently, two official plugins are available:
+Register
+![alt text](src/assets/README/Register.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Forgot Password
+![alt text](src/assets/README/Forgot.png)
 
-## React Compiler
+Dashboard - Estudiante
+![alt text](src/assets/README/Perfil.png)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Actualizar perfil - Estudiante
+![alt text](src/assets/README/ActualizarPerfil.png)
+![alt text](src/assets/README/ActualizarPerfil2.png)
 
-## Expanding the ESLint configuration
+Busqueda - Estudiante
+![alt text](src/assets/README/Busqueda.png)
+![alt text](src/assets/README/Busqueda2.png)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Calendario - Estudiante
+![alt text](src/assets/README/Calendario.png)
+![alt text](src/assets/README/Calendario2.png)
+
+Planificación - Estudiante
+![alt text](src/assets/README/Planificacion.png)
+
+Estadisticas - Administrador
+![alt text](src/assets/README/Estadisticas.png)
+
+Gestion - Administrador
+![alt text](src/assets/README/Gestion.png)
+
+Admin CRUD - Administrador
+![alt text](src/assets/README/AdminCRUD.png)
+![alt text](src/assets/README/AdminCRUD2.png)
+
+Student List - Administrador
+![alt text](src/assets/README/ListaEstudiantes.png)
