@@ -7,6 +7,7 @@ import { FaEdit, FaSave, FaTimes, FaUser, FaHeartbeat, FaRunning, FaWallet, FaId
 const PersonalData = () => {
     const { token } = storeAuth()
     const [loading, setLoading] = useState(true)
+    const [saving, setSaving] = useState(false)
     const [isEditing, setIsEditing] = useState(false)
     const [userProfile, setUserProfile] = useState({})
 
@@ -122,6 +123,7 @@ const PersonalData = () => {
         }
 
         console.log("Enviando actualizaciones (PUT)...", datosParaEnviar)
+        setSaving(true)
 
         try {
             // Using PUT method and /actualizarperfil/:id endpoint
@@ -140,6 +142,8 @@ const PersonalData = () => {
         } catch (error) {
             console.error("Error updating profile:", error)
             toast.error(error.response?.data?.msg || "Error al guardar los cambios")
+        } finally {
+            setSaving(false)
         }
     }
 
@@ -372,9 +376,19 @@ const PersonalData = () => {
                         </button>
                         <button
                             type="submit"
-                            className="flex-1 py-3 bg-secondary text-white font-bold rounded-xl shadow-lg hover:bg-secondary/90 transition flex justify-center items-center gap-2"
+                            disabled={saving}
+                            className={`flex-1 py-3 bg-secondary text-white font-bold rounded-xl shadow-lg transition flex justify-center items-center gap-2 ${saving ? 'opacity-70 cursor-not-allowed' : 'hover:bg-secondary/90'}`}
                             style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
-                            <FaSave /> Guardar
+                            {saving ? (
+                                <>
+                                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                                    Guardando...
+                                </>
+                            ) : (
+                                <>
+                                    <FaSave /> Guardar
+                                </>
+                            )}
                         </button>
                     </div>
                 </form>
