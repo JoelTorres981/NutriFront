@@ -65,6 +65,13 @@ const Dashboard = () => {
                             </Link>
                         </li>
 
+                        <li className="text-center">
+                            <Link to='/dashboard/planning' className={`${urlActual === '/dashboard/planning' ? 'text-slate-900 bg-secondary' : 'text-slate-600'} text-lg mt-2 hover:text-slate-600 flex items-center gap-3 px-2 py-2 rounded-md ${!expanded && 'md:justify-center'}`}>
+                                <GrSchedule className="text-2xl min-w-[1.5rem]" />
+                                <span className={`whitespace-nowrap duration-200 ${!expanded && 'md:hidden'}`}>Planificación</span>
+                            </Link>
+                        </li>
+
                     </ul>
                 )}
 
