@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form"
-import { ToastContainer } from 'react-toastify'
+
 import { useFetch } from "../hooks/useFetch"
 import loginBackground from '/src/assets/images/loginBackground.jpg'
 import { MdVisibility, MdVisibilityOff } from 'react-icons/md'
@@ -10,7 +10,7 @@ export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const fetchDataBackend = useFetch()
     const { register, handleSubmit, formState: { errors } } = useForm()
-    
+
     const registerUser = async (dataForm) => {
         const url = `${import.meta.env.VITE_BACKEND_URL}/registro`
         await fetchDataBackend(url, dataForm, "POST")
@@ -19,7 +19,7 @@ export const Register = () => {
     return (
         <div className="relative h-screen">
 
-            <ToastContainer />
+
 
             {/* Fondo en toda la pantalla (detrás) - usando la imagen de registro */}
             <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${loginBackground})` }} aria-hidden="true" />
@@ -38,8 +38,8 @@ export const Register = () => {
                         {/* Campo para nombre */}
                         <div className="mb-3">
                             <label className="mb-2 block text-sm font-semibold">Nombre</label>
-                                <input type="text" placeholder="Ingresa tu nombre" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("nombre", { required: "Campo obligatorio" })}
+                            <input type="text" placeholder="Ingresa tu nombre" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                                {...register("nombre", { required: "Campo obligatorio" })}
                             />
                             {errors.nombre && <p className="text-red-800 text-xs">{errors.nombre.message}</p>}
                         </div>
@@ -47,8 +47,8 @@ export const Register = () => {
                         {/* Campo para apellido */}
                         <div className="mb-3">
                             <label className="mb-2 block text-sm font-semibold">Apellido</label>
-                                <input type="text" placeholder="Ingresa tu apellido" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("apellido", { required: "Campo obligatorio" })}
+                            <input type="text" placeholder="Ingresa tu apellido" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                                {...register("apellido", { required: "Campo obligatorio" })}
                             />
                             {errors.apellido && <p className="text-red-800 text-xs">{errors.apellido.message}</p>}
                         </div>
@@ -56,17 +56,17 @@ export const Register = () => {
                         {/* Campo para dirección */}
                         <div className="mb-3">
                             <label className="mb-2 block text-sm font-semibold">Dirección</label>
-                                <input type="text" placeholder="Ingresa tu dirección" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("direccion", { required: "Campo obligatorio" })}
+                            <input type="text" placeholder="Ingresa tu dirección" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                                {...register("direccion", { required: "Campo obligatorio" })}
                             />
                             {errors.direccion && <p className="text-red-800 text-xs">{errors.direccion.message}</p>}
                         </div>
-                        
+
                         {/* Campo para celular */}
                         <div className="mb-3">
                             <label className="mb-2 block text-sm font-semibold">Teléfono</label>
-                                <input type="tel" placeholder="Ingresa tu número de teléfono" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("celular", { required: "Campo obligatorio" })}
+                            <input type="tel" placeholder="Ingresa tu número de teléfono" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                                {...register("celular", { required: "Campo obligatorio" })}
                             />
                             {errors.celular && <p className="text-red-800 text-xs">{errors.celular.message}</p>}
                         </div>
@@ -74,8 +74,8 @@ export const Register = () => {
                         {/* Campo para correo electrónico */}
                         <div className="mb-3">
                             <label className="mb-2 block text-sm font-semibold">Correo electrónico</label>
-                                <input type="email" placeholder="Ingresa tu correo electrónico" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500" 
-                            {...register("email", { required: "Campo obligatorio" })}
+                            <input type="email" placeholder="Ingresa tu correo electrónico" className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500"
+                                {...register("email", { required: "Campo obligatorio" })}
                             />
                             {errors.email && <p className="text-red-800 text-xs">{errors.email.message}</p>}
                         </div>
@@ -90,7 +90,7 @@ export const Register = () => {
                                     className="block w-full rounded-md border border-gray-300 focus:border-purple-700 focus:outline-none focus:ring-1 focus:ring-purple-700 py-1 px-1.5 text-gray-500 pr-10"
                                     {...register("password", { required: "Campo obligatorio" })}
                                 />
-                                    {errors.password && <p className="text-red-800 text-xs">{errors.password.message}</p>}
+                                {errors.password && <p className="text-red-800 text-xs">{errors.password.message}</p>}
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}

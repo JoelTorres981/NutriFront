@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router"
 import { useFetch } from '../hooks/useFetch'
-import { ToastContainer } from 'react-toastify'
+
 import { useForm } from 'react-hook-form'
 import storeAuth from "../context/storeAuth"
 import loginBackground from '/src/assets/images/loginBackground.jpg'
@@ -34,7 +34,7 @@ const Login = () => {
     return (
         <div className="relative h-screen">
 
-            <ToastContainer />
+
 
             {/* Fondo en toda la pantalla (detrás) */}
             <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${loginBackground})` }} aria-hidden="true" />

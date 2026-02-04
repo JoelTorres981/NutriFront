@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { useForm } from 'react-hook-form';
-import { ToastContainer } from 'react-toastify'
+
 import { useFetch } from '../hooks/useFetch'
 import resetBackground from '/src/assets/images/resetBackground.jpg'
 
@@ -17,7 +17,7 @@ export const Forgot = () => {
     return (
         <div className="relative h-screen">
 
-            <ToastContainer />
+
 
             {/* Fondo en toda la pantalla (detrás) - imagen para forgot */}
             <div className="absolute inset-0 bg-no-repeat bg-cover bg-center z-0" style={{ backgroundImage: `url(${resetBackground})` }} aria-hidden="true" />

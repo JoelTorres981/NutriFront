@@ -2,7 +2,7 @@ import nutriLogo from '../assets/nutriApp.png'
 import { Link } from 'react-router'
 import { useParams } from 'react-router'
 import { useEffect } from 'react'
-import { ToastContainer } from 'react-toastify'
+
 import { useFetch } from '../hooks/useFetch'
 
 export const Confirm = () => {
@@ -24,7 +24,7 @@ export const Confirm = () => {
 
         <div className="flex flex-col items-center justify-center h-screen">
 
-            <ToastContainer />
+
 
             <img className="object-cover h-80 w-80 rounded-full border-4 border-solid border-slate-600" src={nutriLogo} alt="image description" />
 
