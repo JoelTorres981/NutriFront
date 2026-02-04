@@ -373,7 +373,7 @@ const PersonalData = () => {
                         <button
                             type="submit"
                             className="flex-1 py-3 bg-secondary text-white font-bold rounded-xl shadow-lg hover:bg-secondary/90 transition flex justify-center items-center gap-2"
-                        >
+                            style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}>
                             <FaSave /> Guardar
                         </button>
                     </div>

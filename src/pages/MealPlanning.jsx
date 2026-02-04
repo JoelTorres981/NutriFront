@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FaPlus, FaTrash, FaUtensils } from 'react-icons/fa';
 import storeAuth from '../context/storeAuth';
+import storeProfile from '../context/storeProfile';
+import ProfileValidationModal from '../components/ProfileValidationModal';
 
 const MealPlanning = () => {
     const [plans, setPlans] = useState([]);
@@ -10,6 +12,7 @@ const MealPlanning = () => {
     const [showModal, setShowModal] = useState(false);
     const [selectedPlanId, setSelectedPlanId] = useState(null);
     const { token } = storeAuth();
+    const { user } = storeProfile();
 
     const fetchPlans = async () => {
         try {
@@ -78,6 +81,7 @@ const MealPlanning = () => {
 
     return (
         <div className="p-6">
+            <ProfileValidationModal user={user} />
             <div className="flex justify-between items-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-800 flex items-center gap-2">
                     <FaUtensils className="text-primary" /> Planificación de Comidas

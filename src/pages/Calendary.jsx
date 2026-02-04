@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight, FaPlus, FaTimes, FaCamera } from 'react-icons/fa';
 import storeAuth from '../context/storeAuth';
+import storeProfile from '../context/storeProfile';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import ProfileValidationModal from '../components/ProfileValidationModal';
 
 const Calendary = () => {
     const { token } = storeAuth();
+    const { user } = storeProfile();
     const [currentDate, setCurrentDate] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [monthData, setMonthData] = useState([]);
@@ -214,6 +217,7 @@ const Calendary = () => {
 
     return (
         <div className="flex h-[calc(100vh-theme(spacing.20))] gap-4 relative">
+            <ProfileValidationModal user={user} />
 
             {/* Main Calendar Area */}
             <div className="flex-1 overflow-y-auto bg-white rounded-xl shadow-sm p-6">
